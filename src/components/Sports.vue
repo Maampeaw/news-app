@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <div class='category'>{{ category }}</div>
+
+    <div class='news-wrapper'>
+    <div v-for="(news, id) in generalNews" :key="id" class='card'>
+      <img width="200" :src="news.urlToImage" alt="" />
+      <div class='title'>{{ news.title.slice(0, 52) }}...</div>
+      <div>{{news.description.slice(0, 70)}}.....<strong>Read more</strong></div>
+    </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapActions, mapGetters } from "vuex";
+export default {
+  mounted() {
+    this.fetchNews(this.category);
+  },
+  name: "News",
+  computed: {
+    category() {
+      return this.$route.params.name ? this.$route.params.name : "general";
+    },
+    ...mapGetters(["generalNews"]),
+  },
+  methods: {
+    getNews() {
+      this.fetchNews(this.category);
+    },
+    ...mapActions(["fetchNews"]),
+  },
+};
+</script>
+
+<style></style>
