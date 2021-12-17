@@ -3,10 +3,12 @@
     <div class='category'>{{ category }}</div>
 
     <div class='news-wrapper'>
-    <div v-for="(news, id) in generalNews.slice(0, 6)" :key="id" class='card'>
+    <div v-for="(news, id) in generalNews" :key="id" class='card'>
       <img class='img' :src="news.urlToImage" alt="" />
       <div class='title'>{{ news.title.slice(0, 52) }}........</div>
       <div>{{news.description.slice(0, 70)}}....<strong>Read more</strong></div>
+      <hr>
+      <div class='author'>Author: <em>{{news.author}}</em></div>
       </div>
     </div>
   </div>
@@ -37,7 +39,9 @@ export default {
 <style >
 
 .card{
-  width: 200px;
+  width: 300px;
+  height: 350px;
+  /* background: gray; */
  
 }
 
@@ -49,17 +53,21 @@ export default {
 .news-wrapper{
   margin: auto;
   width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  
 }
 .img{
-  width: 200px;
+  width: 100%;
+  height: 180px;
 }
 .title{
   font-weight: bolder;
   text-transform: capitalize;
   margin: 5px 0;
+}
+.author{
+  margin-top: 8px;
 }
 @media screen and (max-width: 765px) {
   .news-wrapper{

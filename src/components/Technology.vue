@@ -4,9 +4,11 @@
 
   <div class='news-wrapper'>
     <div v-for="(news, id) in generalNews" :key="id" class='card'>
-      <img width="200" :src="news.urlToImage" alt="" />
+      <img class='img' :src="news.urlToImage" alt="" />
       <div class='title'>{{ news.title.slice(0, 50) }}.....</div>
       <div>{{news.description.slice(0, 70)}}.....y<strong>Read more</strong></div>
+      <hr>
+      <div class='author'>Author: <em>{{news.author}}</em></div>
     </div>
     </div>
   </div>
